@@ -1,0 +1,261 @@
+/* style.css */
+
+/* Reset some default styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+/* Add this to your existing CSS */
+#animationCanvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1; /* Make sure it stays behind other elements */
+}
+
+
+#navbar {
+    position: fixed;
+    top: 0; /* Ensures it sticks to the top */
+    left: 0; /* Ensures it aligns with the left side */
+    width: 100%; /* Stretches across the whole screen */
+    height: 60px;
+    background-color: rgba(255, 255, 255, 0.427); /* Slightly increase opacity for better readability */
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    z-index: 1000; /* Ensures it stays above other content */
+    backdrop-filter: blur(10px); /* Optional: Adds a blur effect for a glassy look */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Adds a subtle shadow to separate it from the background */
+}
+
+.nav-item {
+    color: white;
+    font-size: 20px;
+    cursor: pointer;
+    user-select: none;
+}
+
+.falling {
+    position: absolute;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    /* Background Image Integration */
+    background: url('https://img.freepik.com/free-vector/background-wave-minimalist-modern-style_483537-5220.jpg') no-repeat center center fixed;
+    background-size: cover;
+    /* Adding an overlay to improve readability */
+    position: relative;
+    min-height: 100vh;
+    
+    /* Flexbox Centering */
+    display: flex;
+    justify-content: center; /* Horizontally center */
+    align-items: center;    /* Vertically center */
+}
+
+/* Overlay for darkening the background image */
+body::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.141); /* Adjust the opacity as needed */
+    z-index: -1;
+}
+
+.container {
+    background-color: rgba(255, 255, 255, 0.368); /* Semi-transparent for better contrast */
+    width: 90%;
+    max-width: 600px;
+    padding: 30px 40px;
+    border-radius: 12px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+    
+    /* Remove existing margin to allow Flexbox to handle centering */
+    /* margin: 50px auto; */
+}
+
+header {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+header h1 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 2em;
+    color: #333333;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+header h1 i {
+    margin-right: 10px;
+    color: #0c3a63;
+}
+
+.search-section {
+    width: 100%;
+}
+
+.search-bar {
+    display: flex;
+    margin-bottom: 20px;
+}
+
+#search-input {
+    flex: 1;
+    padding: 12px 20px;
+    font-size: 1em;
+    border: 2px solid #0c3a63;
+    border-right: none;
+    border-radius: 8px 0 0 8px;
+    outline: none;
+    transition: border-color 0.3s;
+}
+
+#search-input:focus {
+    border-color: #0c3a63;
+}
+
+#search-button {
+    padding: 12px 20px;
+    font-size: 1em;
+    border: 2px solid #0c3a63;
+    background-color: #0c3a63;
+    color: #ffffff;
+    border-radius: 0 8px 8px 0;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s;
+    display: flex;
+    align-items: center;
+}
+
+#search-button i {
+    margin-right: 5px;
+}
+
+#search-button:hover {
+    background-color: #0c3a63;
+    transform: translateY(-2px);
+}
+
+#search-button:active {
+    transform: translateY(0);
+}
+
+.search-history-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.search-history-header h2 {
+    font-size: 1.2em;
+    color: #555555;
+}
+
+.clear-button {
+    background-color: transparent;
+    border: none;
+    color: #c82333;
+    font-size: 0.9em;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    transition: color 0.3s;
+}
+
+.clear-button i {
+    margin-right: 5px;
+}
+
+.clear-button:hover {
+    color: #c82333;
+}
+
+#search-history {
+    list-style: none;
+    max-height: 200px;
+    overflow-y: auto;
+    padding-right: 10px;
+}
+
+#search-history li {
+    background-color: #f8f9fa;
+    padding: 10px 15px;
+    margin-bottom: 8px;
+    border-radius: 6px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: background-color 0.3s;
+}
+
+#search-history li:hover {
+    background-color: #e2e6ea;
+}
+
+.history-query {
+    cursor: pointer;
+    color: #dc3545;
+    transition: color 0.3s;
+}
+
+.history-query:hover {
+    color: #dc3545;
+    text-decoration: underline;
+}
+
+.delete-icon {
+    color: #dc3545;
+    cursor: pointer;
+    transition: color 0.3s;
+}
+
+.delete-icon:hover {
+    color: #c82333;
+}
+
+footer {
+    text-align: center;
+    margin-top: 30px;
+    color: #181616;
+    font-size: 0.9em;
+}
+
+/* Scrollbar Styling */
+#search-history::-webkit-scrollbar {
+    width: 6px;
+}
+
+#search-history::-webkit-scrollbar-thumb {
+    background-color: #ced4da;
+    border-radius: 3px;
+}
+
+@media (max-width: 600px) {
+    .container {
+        padding: 20px 25px;
+    }
+
+    header h1 {
+        font-size: 1.5em;
+    }
+
+    #search-button {
+        padding: 12px 15px;
+    }
+
+    .search-history-header h2 {
+        font-size: 1em;
+    }
+}
